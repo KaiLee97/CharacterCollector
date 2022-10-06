@@ -13,3 +13,7 @@
 - [ ] Get help screen
 - [ ] Singleton object of claimed characters which persists with coredata(?)
 - [ ] TBD
+
+## Testing:
+- [ ] Unit tests
+- [ ] Snapshot tests
