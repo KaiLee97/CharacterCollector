@@ -6,4 +6,10 @@
 ## Goals: 
 - [x] Look to have random character queried and loaded using the Jikan REST API.
 - [x] Create UI for users to roll for characters and see information
+- [ ] Component for each character information to be shown in
+- [ ] Lazy list of each pulled character
+- [ ] Buttons to see all claimed characters and a get help screen
+- [ ] Claimed characters screen
+- [ ] Get help screen
+- [ ] Singleton object of claimed characters which persists with coredata(?)
 - [ ] TBD
