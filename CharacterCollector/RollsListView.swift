@@ -9,39 +9,49 @@ import Foundation
 import SwiftUI
 
 struct RollsListView: View {
-    @State private var title: String = ""
-    @State private var name: String = ""
-    @State private var url: String = ""
     @State private var jikanModel: JikanModel = JikanModel(json: [:])
+    @State private var jikanModelList: [JikanModel] = []
     let network = Network()
     var body: some View {
         ZStack {
             Color.black.opacity(0.95).ignoresSafeArea()
             VStack(alignment: .center, spacing: 0) {
-                Text(title)
-                    .foregroundColor(.cyan)
                 Spacer()
-                Text(name)
-                    .foregroundColor(.cyan)
-                Spacer()
-                AsyncImage(url: URL(string: url))
-                Spacer()
-                Button {
-                    Task {
-                        do {
-                            jikanModel = try await network.getRandomCharacter()
-                            title = jikanModel.title
-                            name = jikanModel.characterName
-                            url = jikanModel.imageJpg
-                        } catch {
-                            print("Error", error)
+                ScrollView {
+                    LazyVStack {
+                        ForEach(jikanModelList) { model in
+                            CharacterTile(jikanModel: model)
                         }
                     }
-                } label: {
-                    Text("Fetch character")
                 }
+                Spacer()
             }
             .padding(.vertical, 16)
+            VStack {
+                Spacer()
+                HStack {
+                    Spacer()
+                    Button {
+                        Task {
+                            do {
+                                jikanModel = try await network.getRandomCharacter()
+                                jikanModelList.insert(jikanModel, at: 0)
+                            } catch {
+                                print("Error", error)
+                            }
+                        }
+                    } label: {
+                        HStack(alignment: .center, spacing: 4) {
+                            Text("Roll")
+                            Image(systemName: "dice")
+                        }
+                        .frame(width: 64, height: 32)
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .buttonBorderShape(.capsule)
+                    .padding()
+                }
+            }
         }
     }
 }

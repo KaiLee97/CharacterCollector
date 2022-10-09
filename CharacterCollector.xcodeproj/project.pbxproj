@@ -17,6 +17,7 @@
 		B904420828ED6C18001D946B /* JikanModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B904420728ED6C18001D946B /* JikanModel.swift */; };
 		B904420A28EEA028001D946B /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = B904420928EEA028001D946B /* Network.swift */; };
 		B904420C28EEAACD001D946B /* EntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B904420B28EEAACD001D946B /* EntryView.swift */; };
+		B904420E28F01DC1001D946B /* CharacterTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B904420D28F01DC1001D946B /* CharacterTile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -50,6 +51,7 @@
 		B904420728ED6C18001D946B /* JikanModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JikanModel.swift; sourceTree = "<group>"; };
 		B904420928EEA028001D946B /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		B904420B28EEAACD001D946B /* EntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryView.swift; sourceTree = "<group>"; };
+		B904420D28F01DC1001D946B /* CharacterTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				B90441DD28ED6534001D946B /* CharacterCollectorApp.swift */,
 				B904420B28EEAACD001D946B /* EntryView.swift */,
 				B90441DF28ED6534001D946B /* RollsListView.swift */,
+				B904420D28F01DC1001D946B /* CharacterTile.swift */,
 				B904420728ED6C18001D946B /* JikanModel.swift */,
 				B90441E128ED6537001D946B /* Assets.xcassets */,
 				B90441E328ED6537001D946B /* Preview Content */,
@@ -269,6 +272,7 @@
 				B90441E028ED6534001D946B /* RollsListView.swift in Sources */,
 				B90441DE28ED6534001D946B /* CharacterCollectorApp.swift in Sources */,
 				B904420C28EEAACD001D946B /* EntryView.swift in Sources */,
+				B904420E28F01DC1001D946B /* CharacterTile.swift in Sources */,
 				B904420A28EEA028001D946B /* Network.swift in Sources */,
 				B904420828ED6C18001D946B /* JikanModel.swift in Sources */,
 			);
