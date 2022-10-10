@@ -11,6 +11,7 @@ import SwiftUI
 struct RollsListView: View {
     @State private var jikanModel: JikanModel = JikanModel(json: [:])
     @State private var jikanModelList: [JikanModel] = []
+    @State private var rollCount: Int = 10
     let network = Network()
     var body: some View {
         ZStack {
@@ -30,11 +31,15 @@ struct RollsListView: View {
             VStack {
                 Spacer()
                 HStack {
+                    Text("\(rollCount)" + " rolls left")
+                        .foregroundColor(Color.white)
+                        .padding()
                     Spacer()
                     Button {
                         Task {
                             do {
                                 jikanModel = try await network.getRandomCharacter()
+                                rollCount -= 1
                                 jikanModelList.insert(jikanModel, at: 0)
                             } catch {
                                 print("Error", error)
@@ -49,6 +54,7 @@ struct RollsListView: View {
                     }
                     .buttonStyle(.borderedProminent)
                     .buttonBorderShape(.capsule)
+                    .disabled(rollCount == 0)
                     .padding()
                 }
             }
