@@ -10,6 +10,7 @@ import SwiftUI
 
 struct CharacterTile: View {
     let jikanModel: JikanModel
+    @State var showView: Bool = false
     var body: some View {
         VStack(alignment: .center, spacing: 8) {
             AsyncImage(url: URL(string: jikanModel.imageJpg)) { phase in
@@ -19,11 +20,11 @@ struct CharacterTile: View {
                 case .success(let image):
                     image.resizable()
                          .aspectRatio(contentMode: .fit)
-                         .frame(maxWidth: 200, maxHeight: 200)
+                         .frame(maxWidth: 150, maxHeight: 200)
                 case .failure:
                     Image(systemName: "photo")
                         .aspectRatio(contentMode: .fit)
-                        .frame(maxWidth: 200, maxHeight: 200)
+                        .frame(maxWidth: 150, maxHeight: 200)
                 @unknown default:
                     // Since the AsyncImagePhase enum isn't frozen,
                     // we need to add this currently unused fallback
@@ -51,10 +52,14 @@ struct CharacterTile: View {
         .background(Color.indigo.opacity(0.2))
         .cornerRadius(10)
         .overlay(
-            RoundedRectangle(cornerRadius: 10)
-                .stroke(Color(.sRGB, red: 150/255, green: 150/255, blue: 150/255, opacity: 0.1), lineWidth: 1)
+            RoundedRectangle(cornerRadius: 10, style: .continuous)
+                .stroke(.gray.opacity(0.2), lineWidth: 1)
         )
-        .padding(.top, 16)
-        .padding(.horizontal, 32)
+        .offset(x: showView ? 0 : 450)
+        .onAppear {
+            withAnimation(.linear(duration: 0.2)) {
+                showView = true
+            }
+        }
     }
 }

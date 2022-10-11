@@ -18,17 +18,28 @@ struct RollsListView: View {
             Color.black.opacity(0.95).ignoresSafeArea()
             VStack(alignment: .center, spacing: 0) {
                 Spacer()
-                ScrollView {
-                    LazyVStack {
-                        ForEach(jikanModelList) { model in
-                            CharacterTile(jikanModel: model)
+                if jikanModelList.count != 0 {
+                    ScrollViewReader { proxy in
+                        ScrollView(.vertical) {
+                            LazyVStack {
+                                ForEach(jikanModelList, id: \.self) { model in
+                                    CharacterTile(jikanModel: model)
+                                        .id(model)
+                                        .padding(.vertical, 8)
+                                        .padding(.horizontal, 48)
+                                }
+                            }
                         }
+                        .onChange(of: jikanModelList.count, perform: { value in
+                            proxy.scrollTo(jikanModelList[0])
+                        })
                     }
+                } else {
+                    Text("You have " + "\(rollCount)" + " rolls left")
+                        .font(.title2)
+                        .foregroundColor(Color.white)
+                        .padding()
                 }
-                Spacer()
-            }
-            .padding(.vertical, 16)
-            VStack {
                 Spacer()
                 HStack {
                     Text("\(rollCount)" + " rolls left")
@@ -58,6 +69,7 @@ struct RollsListView: View {
                     .padding()
                 }
             }
+            .padding(.vertical, 16)
         }
     }
 }
