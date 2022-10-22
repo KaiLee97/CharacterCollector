@@ -8,6 +8,8 @@
 - [x] Create UI for users to roll for characters and see information
 - [x] Component for each character information to be shown in
 - [x] Lazy list of each pulled character
+- [x] Retry functionality when call fails
+- [ ] Character claiming capability
 - [ ] Buttons to see all claimed characters and a get help screen
 - [ ] Claimed characters screen
 - [ ] Get help screen
