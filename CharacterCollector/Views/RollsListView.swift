@@ -9,52 +9,44 @@ import Foundation
 import SwiftUI
 
 struct RollsListView: View {
-    @State private var jikanModel: JikanModel = JikanModel(json: [:])
-    @State private var jikanModelList: [JikanModel] = []
-    @State private var rollCount: Int = 10
+    @ObservedObject var viewModel: RollsListViewModel = RollsListViewModel()
     let network = Network()
     var body: some View {
         ZStack {
             Color.black.opacity(0.95).ignoresSafeArea()
             VStack(alignment: .center, spacing: 0) {
                 Spacer()
-                if jikanModelList.count != 0 {
+                if viewModel.jikanModelList.count != 0 {
                     ScrollViewReader { proxy in
                         ScrollView(.vertical) {
                             LazyVStack {
-                                ForEach(jikanModelList, id: \.self) { model in
-                                    CharacterTile(jikanModel: model)
-                                        .id(model)
-                                        .padding(.vertical, 8)
-                                        .padding(.horizontal, 48)
+                                ForEach(viewModel.jikanModelList, id: \.self) { model in
+                                    CharacterTile(jikanModel: model, viewModel: viewModel)
+                                            .id(model)
+                                            .padding(.vertical, 8)
+                                            .padding(.horizontal, 48)
                                 }
                             }
                         }
-                        .onChange(of: jikanModelList.count, perform: { value in
-                            proxy.scrollTo(jikanModelList[0])
+                        .onChange(of: viewModel.jikanModelList.count, perform: { value in
+                            proxy.scrollTo(viewModel.jikanModelList[0])
                         })
                     }
                 } else {
-                    Text("You have " + "\(rollCount)" + " rolls left")
+                    Text("You have " + "\(viewModel.rollCount)" + " rolls left")
                         .font(.title2)
                         .foregroundColor(Color.white)
                         .padding()
                 }
                 Spacer()
                 HStack {
-                    Text("\(rollCount)" + " rolls left")
+                    Text("\(viewModel.rollCount)" + " rolls left")
                         .foregroundColor(Color.white)
                         .padding()
                     Spacer()
                     Button {
                         Task {
-                            do {
-                                jikanModel = try await network.getRandomCharacter()
-                                rollCount -= 1
-                                jikanModelList.insert(jikanModel, at: 0)
-                            } catch {
-                                print("Error", error)
-                            }
+                            await viewModel.completeCharacterRoll()
                         }
                     } label: {
                         HStack(alignment: .center, spacing: 4) {
@@ -65,7 +57,7 @@ struct RollsListView: View {
                     }
                     .buttonStyle(.borderedProminent)
                     .buttonBorderShape(.capsule)
-                    .disabled(rollCount == 0)
+                    .disabled(viewModel.rollCount == 0)
                     .padding()
                 }
             }

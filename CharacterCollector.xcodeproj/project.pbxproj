@@ -18,6 +18,7 @@
 		B904420A28EEA028001D946B /* Network.swift in Sources */ = {isa = PBXBuildFile; fileRef = B904420928EEA028001D946B /* Network.swift */; };
 		B904420C28EEAACD001D946B /* EntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B904420B28EEAACD001D946B /* EntryView.swift */; };
 		B904420E28F01DC1001D946B /* CharacterTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B904420D28F01DC1001D946B /* CharacterTile.swift */; };
+		B90442102903CB9D001D946B /* RollsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B904420F2903CB9D001D946B /* RollsListViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 		B904420928EEA028001D946B /* Network.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Network.swift; sourceTree = "<group>"; };
 		B904420B28EEAACD001D946B /* EntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryView.swift; sourceTree = "<group>"; };
 		B904420D28F01DC1001D946B /* CharacterTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTile.swift; sourceTree = "<group>"; };
+		B904420F2903CB9D001D946B /* RollsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollsListViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -102,14 +104,14 @@
 		B90441DC28ED6534001D946B /* CharacterCollector */ = {
 			isa = PBXGroup;
 			children = (
-				B90441DD28ED6534001D946B /* CharacterCollectorApp.swift */,
-				B904420B28EEAACD001D946B /* EntryView.swift */,
-				B90441DF28ED6534001D946B /* RollsListView.swift */,
-				B904420D28F01DC1001D946B /* CharacterTile.swift */,
-				B904420728ED6C18001D946B /* JikanModel.swift */,
 				B90441E128ED6537001D946B /* Assets.xcassets */,
+				B90441DD28ED6534001D946B /* CharacterCollectorApp.swift */,
+				B90442172903E246001D946B /* Models */,
+				B90442152903E223001D946B /* Network */,
 				B90441E328ED6537001D946B /* Preview Content */,
-				B904420928EEA028001D946B /* Network.swift */,
+				B90442142903E1F6001D946B /* UIElements */,
+				B90442162903E234001D946B /* ViewModels */,
+				B90442132903E1D5001D946B /* Views */,
 			);
 			path = CharacterCollector;
 			sourceTree = "<group>";
@@ -137,6 +139,47 @@
 				B90441FA28ED6537001D946B /* CharacterCollectorUITestsLaunchTests.swift */,
 			);
 			path = CharacterCollectorUITests;
+			sourceTree = "<group>";
+		};
+		B90442132903E1D5001D946B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B904420B28EEAACD001D946B /* EntryView.swift */,
+				B90441DF28ED6534001D946B /* RollsListView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		B90442142903E1F6001D946B /* UIElements */ = {
+			isa = PBXGroup;
+			children = (
+				B904420D28F01DC1001D946B /* CharacterTile.swift */,
+			);
+			path = UIElements;
+			sourceTree = "<group>";
+		};
+		B90442152903E223001D946B /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				B904420928EEA028001D946B /* Network.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		B90442162903E234001D946B /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				B904420F2903CB9D001D946B /* RollsListViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		B90442172903E246001D946B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				B904420728ED6C18001D946B /* JikanModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,6 +312,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B90442102903CB9D001D946B /* RollsListViewModel.swift in Sources */,
 				B90441E028ED6534001D946B /* RollsListView.swift in Sources */,
 				B90441DE28ED6534001D946B /* CharacterCollectorApp.swift in Sources */,
 				B904420C28EEAACD001D946B /* EntryView.swift in Sources */,

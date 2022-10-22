@@ -14,6 +14,7 @@ struct JikanModel: Hashable, Identifiable {
     var characterName: String  = defaultText
     var title: String = defaultText
     var imageJpg: String = defaultText
+    var isFailedModel: Bool?
     
     var imageUrl: URL? {return URL(string: imageJpg)}
     
