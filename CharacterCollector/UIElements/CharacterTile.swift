@@ -22,11 +22,11 @@ struct CharacterTile: View {
                     case .success(let image):
                         image.resizable()
                             .aspectRatio(contentMode: .fit)
-                            .frame(maxWidth: 150, maxHeight: 200)
+                            .frame(maxWidth: 300, maxHeight: 500)
                     case .failure:
                         Image(systemName: "photo")
                             .aspectRatio(contentMode: .fit)
-                            .frame(maxWidth: 150, maxHeight: 200)
+                            .frame(maxWidth: 300, maxHeight: 500)
                     @unknown default:
                         // Since the AsyncImagePhase enum isn't frozen,
                         // we need to add this currently unused fallback
@@ -61,11 +61,18 @@ struct CharacterTile: View {
                 Button {
                     Task {
                         viewModel.removeFailedModelsFromList()
-                        await viewModel.completeCharacterRoll()
+                        let error = await viewModel.completeCharacterRoll()
+                        // Force data to be loaded with the main thread
+                        await MainActor.run {
+                            if error != nil {
+                                print(error as Any)
+                            }
+                        }
                     }
                 } label: {
                     Image(systemName: "arrow.triangle.2.circlepath")
                         .font(.system(size: 32))
+                        .frame(width: 300)
                 }
                 Spacer()
                 

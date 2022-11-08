@@ -46,7 +46,13 @@ struct RollsListView: View {
                     Spacer()
                     Button {
                         Task {
-                            await viewModel.completeCharacterRoll()
+                            let error = await viewModel.completeCharacterRoll()
+                            // Force data to be loaded with the main thread
+                            await MainActor.run {
+                                if error != nil {
+                                    print(error as Any)
+                                }
+                            }
                         }
                     } label: {
                         HStack(alignment: .center, spacing: 4) {
@@ -57,7 +63,7 @@ struct RollsListView: View {
                     }
                     .buttonStyle(.borderedProminent)
                     .buttonBorderShape(.capsule)
-                    .disabled(viewModel.rollCount == 0)
+                    .disabled(viewModel.rollCount <= 0)
                     .padding()
                 }
             }

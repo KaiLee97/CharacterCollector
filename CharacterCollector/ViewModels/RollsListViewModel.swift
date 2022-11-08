@@ -8,6 +8,7 @@
 import Foundation
 import SwiftUI
 
+@MainActor
 class RollsListViewModel: ObservableObject {
     @Published var jikanModel: JikanModel = JikanModel(json: [:])
     @Published var jikanModelList: [JikanModel] = []
@@ -16,10 +17,11 @@ class RollsListViewModel: ObservableObject {
     let network = Network()
     
     func completeCharacterRoll() async -> Error? {
+        guard rollCount > 0 else { return nil }
         if let model = try? await network.getRandomCharacter() {
             jikanModel = model
-            rollCount -= 1
             jikanModelList.insert(jikanModel, at: 0)
+            rollCount -= 1
             return nil
         } else {
             jikanModel.isFailedModel = true

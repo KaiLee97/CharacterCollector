@@ -20,19 +20,19 @@ struct JikanModel: Hashable, Identifiable {
     
     init(json: [String:Any]) {
         if let data = json["data"] as? [String:Any] {
-            if let name = data["name"] {self.characterName = "\(name)"}
+            if let name = data["name"] { self.characterName = "\(name)" }
             if let images = data["images"] as? [String:Any] {
                 if let jpg = images["jpg"] as? [String:Any] {
-                    if let image = jpg["image_url"] {self.imageJpg = "\(image)"}
+                    if let image = jpg["image_url"] { self.imageJpg = "\(image)" }
                 }
             }
             if let anime = data["anime"] as? [[String:Any]] {
                 if let details = anime.first?["anime"] as? [String:Any] {
-                    if let title = details["title"] {self.title = "\(title)"}
+                    if let title = details["title"] { self.title = "\(title)" }
                 }
             } else if let manga = data["manga"] as? [[String:Any]] {
                 if let details = manga.first?["manga"] as? [String:Any] {
-                    if let title = details["title"] {self.title = "\(title)"}
+                    if let title = details["title"] { self.title = "\(title)" }
                 }
             }
         }
