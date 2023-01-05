@@ -95,6 +95,10 @@ struct CharacterTile: View {
                         .font(.system(size: 32))
                         .frame(width: 300)
                 }
+                Text("Tap to try again")
+                    .font(.caption)
+                    .multilineTextAlignment(.trailing)
+                    .foregroundColor(Color.white)
                 Spacer()
                 
             }
