@@ -13,20 +13,29 @@ class RollsListViewModel: ObservableObject {
     @Published var jikanModel: JikanModel = JikanModel(json: [:])
     @Published var jikanModelList: [JikanModel] = []
     @Published var rollCount: Int = 10
+    @Published private(set) var state = State.idle
+    
+    enum State {
+        case idle
+        case loading
+        case failed
+        case loaded
+    }
     
     let network = Network()
     
-    func completeCharacterRoll() async -> Error? {
-        guard rollCount > 0 else { return nil }
+    func completeCharacterRoll() async -> Void {
+        guard rollCount > 0 else { return }
+        state = .loading
         if let model = try? await network.getRandomCharacter() {
             jikanModel = model
             jikanModelList.insert(jikanModel, at: 0)
+            state = .loaded
             rollCount -= 1
-            return nil
         } else {
             jikanModel.isFailedModel = true
             jikanModelList.insert(jikanModel, at: 0)
-            return NSError()
+            state = .failed
         }
     }
     

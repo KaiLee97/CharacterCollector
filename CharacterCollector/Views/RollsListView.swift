@@ -46,24 +46,23 @@ struct RollsListView: View {
                     Spacer()
                     Button {
                         Task {
-                            let error = await viewModel.completeCharacterRoll()
-                            // Force data to be loaded with the main thread
-                            await MainActor.run {
-                                if error != nil {
-                                    print(error as Any)
-                                }
-                            }
+                            await viewModel.completeCharacterRoll()
                         }
                     } label: {
-                        HStack(alignment: .center, spacing: 4) {
-                            Text("Roll")
-                            Image(systemName: "dice")
+                        if viewModel.state == .loading {
+                            Text("Loading")
+                            .frame(width: 64, height: 32)
+                        } else {
+                            HStack(alignment: .center, spacing: 4) {
+                                Text("Roll")
+                                Image(systemName: "dice")
+                            }
+                            .frame(width: 64, height: 32)
                         }
-                        .frame(width: 64, height: 32)
                     }
                     .buttonStyle(.borderedProminent)
                     .buttonBorderShape(.capsule)
-                    .disabled(viewModel.rollCount <= 0)
+                    .disabled(viewModel.rollCount <= 0 || viewModel.state == .loading)
                     .padding()
                 }
             }
