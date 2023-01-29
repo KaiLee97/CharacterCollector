@@ -10,12 +10,12 @@
 - [x] Component for each character information to be shown in
 - [x] Lazy list of each pulled character
 - [x] Retry functionality when call fails
-- [ ] Character claiming capability
+- [x] Character claiming capability
 - [ ] Buttons to see all claimed characters and a get help screen
-- [ ] Claimed characters screen
+- [x] Claimed characters screen
 - [ ] Get help screen
-- [ ] Singleton object of claimed characters which persists with coredata(?)
-- [ ] TBD
+- [x] Singleton object of claimed characters which persists in disc
+- [ ] Refactor
 
 ## Testing:
 - [ ] Unit tests
