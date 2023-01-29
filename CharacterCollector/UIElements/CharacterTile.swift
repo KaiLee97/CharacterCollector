@@ -13,6 +13,7 @@ struct CharacterTile: View {
     @ObservedObject var viewModel: RollsListViewModel
     @State var showView: Bool = false
     @State var claimStatus: Bool = false
+    
     var body: some View {
         VStack(alignment: .center, spacing: 8) {
             if jikanModel.isFailedModel == nil {
@@ -50,7 +51,13 @@ struct CharacterTile: View {
                     .foregroundColor(Color.white)
                     Spacer()
                     Button {
-                        claimStatus = true
+                        if !claimStatus {
+                            JikanManager.shared.claimCharacter(char: jikanModel)
+                            claimStatus = true
+                        } else {
+                            JikanManager.shared.unclaimCharacter(char: jikanModel)
+                            claimStatus = false
+                        }
                     } label: {
                         VStack(alignment: .center, spacing: 8) {
                             if claimStatus {

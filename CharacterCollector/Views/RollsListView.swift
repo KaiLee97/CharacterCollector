@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 struct RollsListView: View {
-    @ObservedObject var viewModel: RollsListViewModel = RollsListViewModel()
+    @StateObject var viewModel: RollsListViewModel = RollsListViewModel()
     let network = Network()
     var body: some View {
         NavigationStack {
@@ -71,8 +71,8 @@ struct RollsListView: View {
             }
             .toolbar {
                 ToolbarItem(placement: .navigationBarTrailing) {
-                    Button {
-                        print("Show claimed characters")
+                    NavigationLink {
+                        ClaimedListView()
                     } label: {
                         Text("Claim List \(Image(systemName: "list.bullet"))")
                     }

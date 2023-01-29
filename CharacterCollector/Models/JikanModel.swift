@@ -8,8 +8,8 @@
 import SwiftUI
 
 let defaultText: String = "N/A"
-struct JikanModel: Hashable, Identifiable {
-    let id = UUID()
+struct JikanModel: Hashable, Identifiable, Codable {
+    var id = UUID()
     var characterId: Int = 0
     var characterName: String  = defaultText
     var title: String = defaultText

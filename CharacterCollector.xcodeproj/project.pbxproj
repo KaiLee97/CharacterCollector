@@ -19,6 +19,9 @@
 		B904420C28EEAACD001D946B /* EntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B904420B28EEAACD001D946B /* EntryView.swift */; };
 		B904420E28F01DC1001D946B /* CharacterTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B904420D28F01DC1001D946B /* CharacterTile.swift */; };
 		B90442102903CB9D001D946B /* RollsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B904420F2903CB9D001D946B /* RollsListViewModel.swift */; };
+		B999F5C02986C3AC00B96CED /* ClaimedListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B999F5BF2986C3AC00B96CED /* ClaimedListView.swift */; };
+		B999F5C22986C7F700B96CED /* JikanStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = B999F5C12986C7F700B96CED /* JikanStore.swift */; };
+		B999F5C42986D09A00B96CED /* JikanManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B999F5C32986D09A00B96CED /* JikanManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -54,6 +57,9 @@
 		B904420B28EEAACD001D946B /* EntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryView.swift; sourceTree = "<group>"; };
 		B904420D28F01DC1001D946B /* CharacterTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTile.swift; sourceTree = "<group>"; };
 		B904420F2903CB9D001D946B /* RollsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollsListViewModel.swift; sourceTree = "<group>"; };
+		B999F5BF2986C3AC00B96CED /* ClaimedListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaimedListView.swift; sourceTree = "<group>"; };
+		B999F5C12986C7F700B96CED /* JikanStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JikanStore.swift; sourceTree = "<group>"; };
+		B999F5C32986D09A00B96CED /* JikanManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JikanManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -144,6 +150,7 @@
 		B90442132903E1D5001D946B /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B999F5BF2986C3AC00B96CED /* ClaimedListView.swift */,
 				B904420B28EEAACD001D946B /* EntryView.swift */,
 				B90441DF28ED6534001D946B /* RollsListView.swift */,
 			);
@@ -178,6 +185,8 @@
 			isa = PBXGroup;
 			children = (
 				B904420728ED6C18001D946B /* JikanModel.swift */,
+				B999F5C12986C7F700B96CED /* JikanStore.swift */,
+				B999F5C32986D09A00B96CED /* JikanManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -318,7 +327,10 @@
 				B904420C28EEAACD001D946B /* EntryView.swift in Sources */,
 				B904420E28F01DC1001D946B /* CharacterTile.swift in Sources */,
 				B904420A28EEA028001D946B /* Network.swift in Sources */,
+				B999F5C22986C7F700B96CED /* JikanStore.swift in Sources */,
+				B999F5C02986C3AC00B96CED /* ClaimedListView.swift in Sources */,
 				B904420828ED6C18001D946B /* JikanModel.swift in Sources */,
+				B999F5C42986D09A00B96CED /* JikanManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

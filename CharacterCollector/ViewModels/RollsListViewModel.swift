@@ -14,6 +14,7 @@ class RollsListViewModel: ObservableObject {
     @Published var jikanModelList: [JikanModel] = []
     @Published var rollCount: Int = 10
     @Published private(set) var state = State.idle
+    @ObservedObject private(set) var manager = JikanManager.shared
     
     enum State {
         case idle
