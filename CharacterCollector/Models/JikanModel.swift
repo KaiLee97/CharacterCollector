@@ -10,13 +10,16 @@ import SwiftUI
 let defaultText: String = "N/A"
 struct JikanModel: Hashable, Identifiable, Codable {
     var id = UUID()
-    var characterId: Int = 0
     var characterName: String  = defaultText
     var title: String = defaultText
-    var imageJpg: String = defaultText
+    var imageJpg: String {
+        didSet {
+            self.imageUrl = URL(string: imageJpg)
+        }
+    }
     var isFailedModel: Bool?
     
-    var imageUrl: URL? {return URL(string: imageJpg)}
+    var imageUrl: URL?
     
     init(json: [String:Any]) {
         if let data = json["data"] as? [String:Any] {
@@ -25,6 +28,8 @@ struct JikanModel: Hashable, Identifiable, Codable {
                 if let jpg = images["jpg"] as? [String:Any] {
                     if let image = jpg["image_url"] { self.imageJpg = "\(image)" }
                 }
+            } else {
+                self.imageJpg = defaultText
             }
             if let anime = data["anime"] as? [[String:Any]] {
                 if let details = anime.first?["anime"] as? [String:Any] {
@@ -37,4 +42,17 @@ struct JikanModel: Hashable, Identifiable, Codable {
             }
         }
     }
+}
+
+extension JikanModel {
+    
+    init(characterName: String, title: String, imageJpg: String) {
+        self.characterName = characterName
+        self.title = title
+        self.imageJpg = imageJpg
+    }
+    
+    static let testData: [JikanModel] = {
+        return [JikanModel(characterName: "Roxy Migurdia", title: "Mushoku Tensei: Isekai Ittara Honki Dasu", imageJpg: "https:\/\/cdn.myanimelist.net\/images\/characters\/4\/423670.jpg")]
+    }()
 }

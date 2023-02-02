@@ -10,16 +10,9 @@ import SwiftUI
 
 class JikanManager: ObservableObject {
     static let shared = JikanManager()
-    private var store = JikanStore()
     private init() {
-        JikanStore.load { result in
-            switch result {
-            case .failure(let error):
-                fatalError(error.localizedDescription)
-            case .success(let jikans):
-                self.store.jikans = jikans
-                self.claimedList = jikans
-            }
+        if let retrievedData = UserDefaults.standard.data(forKey: "claimedList") {
+            self.claimedList = try! JSONDecoder().decode([JikanModel].self, from: retrievedData)
         }
     }
     
@@ -37,13 +30,5 @@ class JikanManager: ObservableObject {
     
     func clearClaimList() {
         claimedList.removeAll()
-    }
-    
-    deinit {
-        JikanStore.save(jikans: claimedList) { result in
-            if case .failure(let error) = result {
-                fatalError(error.localizedDescription)
-            }
-        }
     }
 }

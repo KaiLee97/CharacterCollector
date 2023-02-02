@@ -10,6 +10,7 @@ import SwiftUI
 
 class Network {
     private let jikanApiUrl: String = "https://api.jikan.moe/v4/characters/"
+    
     func getRandomCharacter() async throws -> JikanModel? {
         let randomId = Int.random(in: 1...218135)
         guard let url = URL(string: jikanApiUrl + "\(randomId)" + "/full") else { fatalError("Missing URL") }
@@ -22,6 +23,7 @@ class Network {
             return nil
         }
         let json = try JSONSerialization.jsonObject(with: data)
+        
         return JikanModel(json: json as! [String : Any])
     }
 }

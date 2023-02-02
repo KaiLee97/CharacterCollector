@@ -46,9 +46,7 @@ struct RollsListView: View {
                             .padding()
                         Spacer()
                         Button {
-                            Task {
-                                await viewModel.completeCharacterRoll()
-                            }
+                            viewModel.completeCharacterRoll()
                         } label: {
                             if viewModel.state == .loading {
                                 Text("Loading")
@@ -77,6 +75,10 @@ struct RollsListView: View {
                         Text("Claim List \(Image(systemName: "list.bullet"))")
                     }
                 }
+            }
+            .onDisappear {
+                let encodedData = try! JSONEncoder().encode(JikanManager.shared.claimedList)
+                UserDefaults.standard.set(encodedData, forKey: "claimedList")
             }
         }
     }

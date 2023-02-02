@@ -93,10 +93,8 @@ struct CharacterTile: View {
                     .layoutPriority(100)
                     .padding()
                 Button {
-                    Task {
                         viewModel.removeFailedModelsFromList()
-                        await viewModel.completeCharacterRoll()
-                    }
+                        viewModel.completeCharacterRoll()
                 } label: {
                     Image(systemName: "arrow.triangle.2.circlepath")
                         .font(.system(size: 32))
