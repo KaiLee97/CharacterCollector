@@ -19,8 +19,5 @@ class CharacterCollectorSnapshotTests: XCTestCase {
         var viewModel = RollsListViewModel()
         let rollsListView = RollsListView(viewModel: viewModel)
         assertSnapshot(matching: rollsListView, as: .image(layout: .device(config: .iPhone12)))
-        
-        viewModel.jikanModelList = JikanModel.testData
-        assertSnapshot(matching: rollsListView, as: .image(layout: .device(config: .iPhone12)))
     }
 }

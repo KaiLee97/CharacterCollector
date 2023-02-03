@@ -12,14 +12,8 @@ struct JikanModel: Hashable, Identifiable, Codable {
     var id = UUID()
     var characterName: String  = defaultText
     var title: String = defaultText
-    var imageJpg: String {
-        didSet {
-            self.imageUrl = URL(string: imageJpg)
-        }
-    }
+    var imageJpg: String = defaultText
     var isFailedModel: Bool?
-    
-    var imageUrl: URL?
     
     init(json: [String:Any]) {
         if let data = json["data"] as? [String:Any] {
@@ -53,6 +47,6 @@ extension JikanModel {
     }
     
     static let testData: [JikanModel] = {
-        return [JikanModel(characterName: "Roxy Migurdia", title: "Mushoku Tensei: Isekai Ittara Honki Dasu", imageJpg: "https:\/\/cdn.myanimelist.net\/images\/characters\/4\/423670.jpg")]
+        return [JikanModel(characterName: "Roxy Migurdia", title: "Mushoku Tensei: Isekai Ittara Honki Dasu", imageJpg: "https://cdn.myanimelist.net/images/characters/4/423670.jpg")]
     }()
 }
