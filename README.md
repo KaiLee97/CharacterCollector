@@ -11,12 +11,10 @@
 - [x] Lazy list of each pulled character
 - [x] Retry functionality when call fails
 - [x] Character claiming capability
-- [ ] Buttons to see all claimed characters and a get help screen
+- [x] Buttons to see all claimed characters
 - [x] Claimed characters screen
-- [ ] Get help screen
-- [x] Singleton object of claimed characters which persists in disc
+- [x] List of claimed characters which persists in disc
 - [ ] Refactor
 
 ## Testing:
-- [ ] Unit tests
-- [ ] Snapshot tests
+- [x] Snapshot tests
