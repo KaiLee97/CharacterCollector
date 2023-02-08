@@ -1,5 +1,4 @@
 # CharacterCollector
-![IMG_3403](https://user-images.githubusercontent.com/14980137/197329867-9592db26-ac48-48cf-baaa-3898a567eddf.PNG)
 
 ### App where you can roll for random characters from anime/manga and claim them to add to your own collection!
 
