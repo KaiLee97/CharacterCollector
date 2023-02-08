@@ -13,7 +13,9 @@
 - [x] Character claiming capability
 - [x] Buttons to see all claimed characters
 - [x] Claimed characters screen
+- [ ] Ability to see image and unclaim in claimed screen
 - [x] List of claimed characters which persists in disc
+- [ ] Remove back button from rolls list.
 - [ ] Refactor
 
 ## Testing:
