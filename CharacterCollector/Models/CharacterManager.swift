@@ -12,7 +12,10 @@ class CharacterManager: ObservableObject {
     static let shared = CharacterManager()
     private init() {
         if let retrievedData = UserDefaults.standard.data(forKey: "claimedList") {
-            self.claimedList = try! JSONDecoder().decode([Character].self, from: retrievedData)
+            let data = try? JSONDecoder().decode([Character].self, from: retrievedData)
+            self.claimedList = data ?? []
+        } else {
+            self.claimedList = []
         }
     }
     
