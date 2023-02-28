@@ -13,6 +13,7 @@ struct Character: Identifiable, Equatable, Codable, Hashable {
     var name: String
     var mediaTitle: String
     var imageURLString: String
+    var claimed: Bool = false
     var isLoaded: State = .loading
     
     enum State: Codable {
@@ -44,11 +45,12 @@ struct Character: Identifiable, Equatable, Codable, Hashable {
 
 extension Character {
     
-    init(name: String, mediaTitle: String, imageURLString: String) {
+    init(name: String, mediaTitle: String, imageURLString: String, claimed: Bool = false) {
         self.name = name
         self.mediaTitle = mediaTitle
         self.imageURLString = imageURLString
         self.isLoaded = .loaded
+        self.claimed = claimed
     }
     
     static let testData: [Character] = {

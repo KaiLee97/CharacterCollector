@@ -9,9 +9,9 @@ import Foundation
 import SwiftUI
 
 struct CharacterTile: View {
-    let character: Character
+    var character: Character
     @State var showView: Bool = false
-    @State var claimStatus: Bool = false
+    @State var claimStatus: Bool?
     let retryAction: (() -> Void)
     
     var body: some View {
@@ -52,16 +52,15 @@ struct CharacterTile: View {
                     .foregroundColor(Color.white)
                     Spacer()
                     Button {
-                        if !claimStatus {
-                            CharacterManager.shared.claimCharacter(char: character)
-                            claimStatus = true
-                        } else {
+                        if let claimStatus = claimStatus, claimStatus {
                             CharacterManager.shared.unclaimCharacter(char: character)
-                            claimStatus = false
+                        } else {
+                            CharacterManager.shared.claimCharacter(char: character)
                         }
+                        claimStatus?.toggle()
                     } label: {
                         VStack(alignment: .center, spacing: 8) {
-                            if claimStatus {
+                            if let claimStatus = claimStatus, claimStatus {
                                 Text("Claimed")
                                     .multilineTextAlignment(.leading)
                                 Image(systemName: "heart.fill")
@@ -82,6 +81,11 @@ struct CharacterTile: View {
                         )
                     }
                     .layoutPriority(100)
+                    .onAppear {
+                        if claimStatus == nil {
+                            claimStatus = character.claimed
+                        }
+                    }
                 }
                 .padding(.horizontal, 16)
                 .padding(.vertical)
