@@ -16,8 +16,9 @@
 		B904420C28EEAACD001D946B /* EntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B904420B28EEAACD001D946B /* EntryView.swift */; };
 		B904420E28F01DC1001D946B /* CharacterTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = B904420D28F01DC1001D946B /* CharacterTile.swift */; };
 		B90442102903CB9D001D946B /* RollsListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B904420F2903CB9D001D946B /* RollsListViewModel.swift */; };
+		B91EC2B629ADE01500F81548 /* Character.swift in Sources */ = {isa = PBXBuildFile; fileRef = B91EC2B529ADE01500F81548 /* Character.swift */; };
 		B999F5C02986C3AC00B96CED /* ClaimedListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B999F5BF2986C3AC00B96CED /* ClaimedListView.swift */; };
-		B999F5C42986D09A00B96CED /* JikanManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B999F5C32986D09A00B96CED /* JikanManager.swift */; };
+		B999F5C42986D09A00B96CED /* CharacterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B999F5C32986D09A00B96CED /* CharacterManager.swift */; };
 		B999F5E5298B76CD00B96CED /* SnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B999F5CF298B6FA000B96CED /* SnapshotTests.swift */; };
 		B999F5E7298B76DD00B96CED /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = B999F5E6298B76DD00B96CED /* SnapshotTesting */; };
 /* End PBXBuildFile section */
@@ -56,8 +57,9 @@
 		B904420B28EEAACD001D946B /* EntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EntryView.swift; sourceTree = "<group>"; };
 		B904420D28F01DC1001D946B /* CharacterTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterTile.swift; sourceTree = "<group>"; };
 		B904420F2903CB9D001D946B /* RollsListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RollsListViewModel.swift; sourceTree = "<group>"; };
+		B91EC2B529ADE01500F81548 /* Character.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Character.swift; sourceTree = "<group>"; };
 		B999F5BF2986C3AC00B96CED /* ClaimedListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaimedListView.swift; sourceTree = "<group>"; };
-		B999F5C32986D09A00B96CED /* JikanManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JikanManager.swift; sourceTree = "<group>"; };
+		B999F5C32986D09A00B96CED /* CharacterManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CharacterManager.swift; sourceTree = "<group>"; };
 		B999F5CF298B6FA000B96CED /* SnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotTests.swift; sourceTree = "<group>"; };
 		B999F5D4298B726900B96CED /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		B999F5DC298B769500B96CED /* CharacterCollectorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CharacterCollectorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -161,8 +163,9 @@
 		B90442172903E246001D946B /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				B91EC2B529ADE01500F81548 /* Character.swift */,
+				B999F5C32986D09A00B96CED /* CharacterManager.swift */,
 				B904420728ED6C18001D946B /* JikanModel.swift */,
-				B999F5C32986D09A00B96CED /* JikanManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -304,11 +307,12 @@
 				B90441E028ED6534001D946B /* RollsListView.swift in Sources */,
 				B90441DE28ED6534001D946B /* CharacterCollectorApp.swift in Sources */,
 				B904420C28EEAACD001D946B /* EntryView.swift in Sources */,
+				B91EC2B629ADE01500F81548 /* Character.swift in Sources */,
 				B904420E28F01DC1001D946B /* CharacterTile.swift in Sources */,
 				B904420A28EEA028001D946B /* Network.swift in Sources */,
 				B999F5C02986C3AC00B96CED /* ClaimedListView.swift in Sources */,
 				B904420828ED6C18001D946B /* JikanModel.swift in Sources */,
-				B999F5C42986D09A00B96CED /* JikanManager.swift in Sources */,
+				B999F5C42986D09A00B96CED /* CharacterManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

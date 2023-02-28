@@ -20,14 +20,14 @@ struct ClaimedListView: View {
                         .foregroundColor(Color.white)
                         .padding(.vertical, 16)
                     LazyVStack(alignment: .center, spacing: 0) {
-                        ForEach(JikanManager.shared.claimedList) { char in
+                        ForEach(CharacterManager.shared.claimedList) { char in
                             HStack(alignment: .center, spacing: 12) {
                                 Image(systemName: "heart.fill")
                                     .foregroundColor(.red)
                                     .font(.system(size: 12))
                                 VStack(alignment: .leading, spacing: 4) {
-                                    Text("Name: ").bold().font(.title3) + Text(char.characterName).font(.title2)
-                                    Text("Series: ").bold().font(.body) + Text(char.title).font(.body)
+                                    Text("Name: ").bold().font(.title3) + Text(char.name).font(.title2)
+                                    Text("Series: ").bold().font(.body) + Text(char.mediaTitle).font(.body)
                                 }
                                 .foregroundColor(Color.white)
                                 Spacer()

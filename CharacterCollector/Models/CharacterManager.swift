@@ -8,21 +8,21 @@
 import Foundation
 import SwiftUI
 
-class JikanManager: ObservableObject {
-    static let shared = JikanManager()
+class CharacterManager: ObservableObject {
+    static let shared = CharacterManager()
     private init() {
         if let retrievedData = UserDefaults.standard.data(forKey: "claimedList") {
-            self.claimedList = try! JSONDecoder().decode([JikanModel].self, from: retrievedData)
+            self.claimedList = try! JSONDecoder().decode([Character].self, from: retrievedData)
         }
     }
     
-    @Published private(set) var claimedList = [JikanModel]()
+    @Published private(set) var claimedList = [Character]()
     
-    func claimCharacter(char: JikanModel) {
+    func claimCharacter(char: Character) {
         claimedList.insert(char, at: 0)
     }
     
-    func unclaimCharacter(char: JikanModel) {
+    func unclaimCharacter(char: Character) {
         guard claimedList.contains(char) else { return }
         // Don't consider dupes for now
         claimedList.removeAll(where: {$0 == char})

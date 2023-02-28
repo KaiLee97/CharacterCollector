@@ -9,15 +9,16 @@ import Foundation
 import SwiftUI
 
 struct CharacterTile: View {
-    let jikanModel: JikanModel
-    @ObservedObject var viewModel: RollsListViewModel
+    let character: Character
     @State var showView: Bool = false
     @State var claimStatus: Bool = false
+    let retryAction: (() -> Void)
     
     var body: some View {
         VStack(alignment: .center, spacing: 8) {
-            if jikanModel.isFailedModel == nil {
-                AsyncImage(url: URL(string: jikanModel.imageJpg)) { phase in
+            switch character.isLoaded {
+            case .loaded:
+                AsyncImage(url: URL(string: character.imageURLString)) { phase in
                     switch phase {
                     case .empty:
                         ProgressView()
@@ -41,10 +42,10 @@ struct CharacterTile: View {
                 
                 HStack(alignment: .center) {
                     VStack(alignment: .leading, spacing: 8) {
-                        Text("Name: " + jikanModel.characterName)
+                        Text("Name: " + character.name)
                             .font(.headline)
                             .multilineTextAlignment(.leading)
-                        Text("Manga/Anime: " + jikanModel.title)
+                        Text("Manga/Anime: " + character.mediaTitle)
                             .font(.headline)
                             .multilineTextAlignment(.leading)
                     }
@@ -52,10 +53,10 @@ struct CharacterTile: View {
                     Spacer()
                     Button {
                         if !claimStatus {
-                            JikanManager.shared.claimCharacter(char: jikanModel)
+                            CharacterManager.shared.claimCharacter(char: character)
                             claimStatus = true
                         } else {
-                            JikanManager.shared.unclaimCharacter(char: jikanModel)
+                            CharacterManager.shared.unclaimCharacter(char: character)
                             claimStatus = false
                         }
                     } label: {
@@ -84,7 +85,7 @@ struct CharacterTile: View {
                 }
                 .padding(.horizontal, 16)
                 .padding(.vertical)
-            } else {
+            case .failed:
                 Spacer()
                 Text("Failed to fetch character")
                     .font(.headline)
@@ -93,8 +94,7 @@ struct CharacterTile: View {
                     .layoutPriority(100)
                     .padding()
                 Button {
-                        viewModel.removeFailedModelsFromList()
-                        viewModel.completeCharacterRoll()
+                    retryAction()
                 } label: {
                     Image(systemName: "arrow.triangle.2.circlepath")
                         .font(.system(size: 32))
@@ -105,8 +105,19 @@ struct CharacterTile: View {
                     .multilineTextAlignment(.trailing)
                     .foregroundColor(Color.white)
                 Spacer()
-                
+            case .loading:
+                Spacer()
+                Text("Loading character")
+                    .font(.headline)
+                    .multilineTextAlignment(.trailing)
+                    .foregroundColor(Color.white)
+                    .layoutPriority(100)
+                    .padding()
+                ProgressView()
+                    .frame(width: 300)
+                Spacer()
             }
+            
         }
         .background(Color.indigo.opacity(0.2))
         .cornerRadius(10)

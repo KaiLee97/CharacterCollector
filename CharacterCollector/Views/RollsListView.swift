@@ -17,24 +17,26 @@ struct RollsListView: View {
                 Color.black.opacity(0.95).ignoresSafeArea()
                 VStack(alignment: .center, spacing: 0) {
                     Spacer()
-                    if viewModel.jikanModelList.count != 0 {
+                    if viewModel.characterList.count != 0 {
                         ScrollViewReader { proxy in
                             ScrollView(.vertical) {
                                 LazyVStack {
-                                    ForEach(viewModel.jikanModelList, id: \.self) { model in
-                                        CharacterTile(jikanModel: model, viewModel: viewModel)
-                                            .id(model)
-                                            .padding(.vertical, 8)
-                                            .padding(.horizontal, 48)
+                                    ForEach(viewModel.characterList, id: \.self) { char in
+                                        CharacterTile(character: char, retryAction: {
+                                            viewModel.retryCharacterRoll(id: char.id)
+                                        })
+                                        .id(char)
+                                        .padding(.vertical, 8)
+                                        .padding(.horizontal, 48)
                                     }
                                 }
                             }
-                            .onChange(of: viewModel.jikanModelList.count, perform: { value in
-                                proxy.scrollTo(viewModel.jikanModelList[0])
+                            .onChange(of: viewModel.characterList.count, perform: { value in
+                                proxy.scrollTo(viewModel.characterList[0])
                             })
                         }
                     } else {
-                        Text("You have " + "\(viewModel.rollCount)" + " rolls left")
+                        Text("Tap roll to get started!")
                             .font(.title2)
                             .foregroundColor(Color.white)
                             .padding()
@@ -48,7 +50,7 @@ struct RollsListView: View {
                         Button {
                             viewModel.completeCharacterRoll()
                         } label: {
-                            if viewModel.state == .loading {
+                            if viewModel.loadingState == .loading {
                                 Text("Loading")
                                     .frame(width: 64, height: 32)
                             } else {
@@ -61,7 +63,7 @@ struct RollsListView: View {
                         }
                         .buttonStyle(.borderedProminent)
                         .buttonBorderShape(.capsule)
-                        .disabled(viewModel.rollCount <= 0 || viewModel.state == .loading)
+                        .disabled(viewModel.rollCount <= 0 || viewModel.loadingState == .loading)
                         .padding()
                     }
                 }
@@ -77,7 +79,7 @@ struct RollsListView: View {
                 }
             }
             .onDisappear {
-                let encodedData = try! JSONEncoder().encode(JikanManager.shared.claimedList)
+                let encodedData = try! JSONEncoder().encode(CharacterManager.shared.claimedList)
                 UserDefaults.standard.set(encodedData, forKey: "claimedList")
             }
         }

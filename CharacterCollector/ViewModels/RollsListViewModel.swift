@@ -9,11 +9,10 @@ import Foundation
 import SwiftUI
 
 class RollsListViewModel: ObservableObject {
-    @Published var jikanModelList: [JikanModel] = []
+    @Published var characterList: [Character] = []
     @Published var rollCount: Int = 10
-    @Published private(set) var state = State.idle
-    @ObservedObject private(set) var manager = JikanManager.shared
-    private var jikanModel: JikanModel = JikanModel(json: [:])
+    @Published var loadingState = State.idle
+    @ObservedObject private(set) var manager = CharacterManager.shared
     
     enum State {
         case idle
@@ -24,30 +23,53 @@ class RollsListViewModel: ObservableObject {
     
     let network = Network()
     
+    @MainActor
     func completeCharacterRoll() -> Void {
         guard rollCount > 0 else { return }
-        state = .loading
+        loadingState = .loading
+        var character = Character()
+        characterList.insert(character, at: 0)
         Task {
             let model = try? await network.getRandomCharacter()
             await MainActor.run {
-                if model != nil {
-                    jikanModel = model!
-                    jikanModelList.insert(jikanModel, at: 0)
-                    state = .loaded
+                if let model = model {
+                    characterList.removeAll(where: { $0.id == character.id })
+                    character = Character(model: model)
+                    characterList.insert(character, at: 0)
+                    loadingState = .loaded
                     rollCount -= 1
                 } else {
-                    jikanModel.isFailedModel = true
-                    jikanModelList.insert(jikanModel, at: 0)
-                    state = .failed
+                    characterList.removeAll(where: { $0.id == character.id })
+                    character = Character(loadingState: .failed)
+                    characterList.insert(character, at: 0)
+                    loadingState = .loaded
                 }
             }
         }
     }
     
-    func removeFailedModelsFromList() -> Void {
+    @MainActor
+    func retryCharacterRoll(id: UUID) -> Void {
+        guard rollCount > 0 else { return }
+        loadingState = .loading
+        characterList.removeAll(where: { $0.id == id })
+        var character = Character()
+        characterList.insert(character, at: 0)
         Task {
+            let model = try? await network.getRandomCharacter()
             await MainActor.run {
-                jikanModelList.removeAll(where: { $0.isFailedModel ?? false })
+                if let model = model {
+                    characterList.removeAll(where: { $0.id == character.id })
+                    character = Character(model: model)
+                    characterList.insert(character, at: 0)
+                    loadingState = .loaded
+                    rollCount -= 1
+                } else {
+                    characterList.removeAll(where: { $0.id == character.id })
+                    character = Character(loadingState: .failed)
+                    characterList.insert(character, at: 0)
+                    loadingState = .loaded
+                }
             }
         }
     }

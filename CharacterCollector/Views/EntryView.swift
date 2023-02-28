@@ -20,13 +20,14 @@ struct EntryView: View {
                         .padding(.bottom, 32)
                         .font(.system(size: 32, weight: .black))
                     
-                        NavigationLink {
-                            RollsListView()
-                        } label: {
-                            Text("Enter")
-                                .foregroundColor(Color.white)
-                                .font(.system(size: 16, weight: .medium))
-                        }
+                    NavigationLink {
+                        RollsListView()
+                            .navigationBarBackButtonHidden(true)
+                    } label: {
+                        Text("Enter")
+                            .foregroundColor(Color.white)
+                            .font(.system(size: 16, weight: .medium))
+                    }
                     Spacer()
                 }
             }
