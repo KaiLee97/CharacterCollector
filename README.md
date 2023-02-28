@@ -13,7 +13,10 @@
 - [x] Claimed characters screen
 - [ ] Ability to see image and unclaim in claimed screen
 - [x] List of claimed characters which persists in disc
-- [ ] Remove back button from rolls list.
+- [x] Remove back button from rolls list.
+- [ ] Reset roll count every 30 minutes
+- [ ] Reset claim ability every 1 hour
+- [ ] Add timers screen to see when rolls will reset
 - [ ] Refactor
 
 ## Testing:
