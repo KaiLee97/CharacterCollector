@@ -22,6 +22,7 @@ class RollsListViewModel: ObservableObject {
     }
     
     let network = Network()
+    let timer = Timer.publish(every: 3600, on: .current, in: .common).autoconnect()
     
     @MainActor
     func completeCharacterRoll() -> Void {

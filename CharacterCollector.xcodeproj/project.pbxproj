@@ -21,6 +21,7 @@
 		B999F5C42986D09A00B96CED /* CharacterManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B999F5C32986D09A00B96CED /* CharacterManager.swift */; };
 		B999F5E5298B76CD00B96CED /* SnapshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B999F5CF298B6FA000B96CED /* SnapshotTests.swift */; };
 		B999F5E7298B76DD00B96CED /* SnapshotTesting in Frameworks */ = {isa = PBXBuildFile; productRef = B999F5E6298B76DD00B96CED /* SnapshotTesting */; };
+		E76211F829B56F3B00803D59 /* ClaimedCharacterTile.swift in Sources */ = {isa = PBXBuildFile; fileRef = E76211F729B56F3B00803D59 /* ClaimedCharacterTile.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -63,6 +64,7 @@
 		B999F5CF298B6FA000B96CED /* SnapshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SnapshotTests.swift; sourceTree = "<group>"; };
 		B999F5D4298B726900B96CED /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Platforms/iPhoneOS.platform/Developer/Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		B999F5DC298B769500B96CED /* CharacterCollectorTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CharacterCollectorTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		E76211F729B56F3B00803D59 /* ClaimedCharacterTile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClaimedCharacterTile.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				B904420D28F01DC1001D946B /* CharacterTile.swift */,
+				E76211F729B56F3B00803D59 /* ClaimedCharacterTile.swift */,
 			);
 			path = UIElements;
 			sourceTree = "<group>";
@@ -307,6 +310,7 @@
 				B90441E028ED6534001D946B /* RollsListView.swift in Sources */,
 				B90441DE28ED6534001D946B /* CharacterCollectorApp.swift in Sources */,
 				B904420C28EEAACD001D946B /* EntryView.swift in Sources */,
+				E76211F829B56F3B00803D59 /* ClaimedCharacterTile.swift in Sources */,
 				B91EC2B629ADE01500F81548 /* Character.swift in Sources */,
 				B904420E28F01DC1001D946B /* CharacterTile.swift in Sources */,
 				B904420A28EEA028001D946B /* Network.swift in Sources */,

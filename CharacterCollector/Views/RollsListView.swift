@@ -82,6 +82,9 @@ struct RollsListView: View {
                 let encodedData = try! JSONEncoder().encode(CharacterManager.shared.claimedList)
                 UserDefaults.standard.set(encodedData, forKey: "claimedList")
             }
+            .onReceive(viewModel.timer) { _ in
+                viewModel.rollCount = 10
+            }
         }
     }
 }
