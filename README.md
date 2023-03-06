@@ -11,10 +11,10 @@
 - [x] Character claiming capability
 - [x] Buttons to see all claimed characters
 - [x] Claimed characters screen
-- [ ] Ability to see image and unclaim in claimed screen
+- [x] Ability to see image in claimed screen
 - [x] List of claimed characters which persists in disc
 - [x] Remove back button from rolls list.
-- [ ] Reset roll count every 30 minutes
+- [x] Reset roll count every 1 hour
 - [ ] Reset claim ability every 1 hour
 - [ ] Add timers screen to see when rolls will reset
 - [ ] Refactor
