@@ -10,7 +10,7 @@ This is an app for you to feel that sensation, with your favorite anime characte
 
 You will be able to roll for random characters from your favorite series and have the chance to collect them all!
 
-## Gif of app in action!
+## Demo
 ![ezgif com-video-to-gif (1)](https://user-images.githubusercontent.com/14980137/223320106-06d1a7fe-47c7-4999-9c00-8bbc45ea9abf.gif)
 
 ## Screenshots
