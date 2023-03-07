@@ -3,7 +3,7 @@
 ### App where you can roll for random characters from anime/manga and claim them to add to your own collection!
 
 ## Gif of app in action!
-![ezgif com-optimize](https://user-images.githubusercontent.com/14980137/223304412-1d45b3d2-d52a-4285-9597-9e834fff7ef5.gif)
+![Simulator Screen Recording - iPhone 14 Pro - 2023-03-06 at 20 35 51](https://user-images.githubusercontent.com/14980137/223305351-6cd15909-ea1e-4b1a-af9b-aa9321240d8c.gif)
 
 ## Screenshots
 ![Screenshot 2023-03-05 at 10 09 07 PM](https://user-images.githubusercontent.com/14980137/223303858-785f482f-ef93-4e3a-8a5e-279c5953adf9.png)
