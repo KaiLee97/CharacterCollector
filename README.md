@@ -2,6 +2,14 @@
 
 ### App where you can roll for random characters from anime/manga and claim them to add to your own collection!
 
+A fun mix of media and game.
+
+Everyone likes to own things. The instant hit of dopamine when your package arrives and you can’t wait to open it and see what’s inside.
+
+This is an app for you to feel that sensation, with your favorite anime characters.
+
+You will be able to roll for random characters from your favorite series and have the chance to collect them all!
+
 ## Gif of app in action!
 ![ezgif com-video-to-gif (1)](https://user-images.githubusercontent.com/14980137/223320106-06d1a7fe-47c7-4999-9c00-8bbc45ea9abf.gif)
 
