@@ -7,6 +7,7 @@
 
 ## Screenshots
 ![Screenshot 2023-03-05 at 10 09 07 PM](https://user-images.githubusercontent.com/14980137/223303858-785f482f-ef93-4e3a-8a5e-279c5953adf9.png)
+![Screenshot 2023-03-05 at 10 01 28 PM](https://user-images.githubusercontent.com/14980137/223320277-962bfd1f-449c-4593-ac5a-64fbc2ced10a.png)
 
 ## Features: 
 - [x] Look to have random character queried and loaded using the Jikan REST API.
