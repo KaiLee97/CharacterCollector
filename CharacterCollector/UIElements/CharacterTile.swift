@@ -102,7 +102,7 @@ struct CharacterTile: View {
                 } label: {
                     Image(systemName: "arrow.triangle.2.circlepath")
                         .font(.system(size: 32))
-                        .frame(width: 300)
+                        .frame(maxWidth: 300)
                 }
                 Text("Tap to try again")
                     .font(.caption)
@@ -118,11 +118,12 @@ struct CharacterTile: View {
                     .layoutPriority(100)
                     .padding()
                 ProgressView()
-                    .frame(width: 300)
+                    .frame(maxWidth: 300)
                 Spacer()
             }
             
         }
+        .padding(.horizontal, 8)
         .background(Color.indigo.opacity(0.2))
         .cornerRadius(10)
         .overlay(
