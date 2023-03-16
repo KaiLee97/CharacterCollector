@@ -10,7 +10,7 @@ import SwiftUI
 
 struct EntryView: View {
     var body: some View {
-        NavigationStack {
+        NavigationView {
             ZStack {
                 Color.black.opacity(0.95).ignoresSafeArea()
                 VStack(alignment: .center, spacing: 0) {
@@ -32,6 +32,8 @@ struct EntryView: View {
                 }
             }
         }
+        .navigationViewStyle(StackNavigationViewStyle()) 
         .navigationBarHidden(true)
+        .navigationBarTitle("", displayMode: .inline)
     }
 }
